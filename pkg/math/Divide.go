@@ -8,7 +8,6 @@
 package math
 
 import (
-	//stdmath "math"
 	"time"
 )
 
