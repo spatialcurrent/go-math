@@ -4,7 +4,9 @@
 
 # Description
 
-**go-math** is a simple library that provides math functions that support varied types, but tries to preserve the original type if possible.  For example, you can sum a slice of ints and floats.
+**go-math** is a simple library that provides math functions that support varied types, but makes smart decisions to maximize precision and maintain input types.  For example, you can sum a slice of ints and floats.
+
+**go-math** can be used in scenarios when you do not know the type of the input data a-priori.  For example, a sensor might report altitude as an integer or as a float64.
 
 # Usage
 
@@ -18,11 +20,11 @@ import (
 )
 ```
 
-See [math](https://godoc.org/github.com/spatialcurrent/go-math/pkg/math) in GoDoc for information on how to use Go API.  See the tests for ways to use this library.
+See [math](https://godoc.org/github.com/spatialcurrent/go-math/pkg/math) in GoDoc for information on how to use Go API.
 
 # Examples
 
-See [examples](https://godoc.org/github.com/spatialcurrent/go-math/pkg/math) in GoDoc.
+See the many [examples](https://godoc.org/github.com/spatialcurrent/go-math/pkg/math) in GoDoc or the tests.
 
 # Testing
 
