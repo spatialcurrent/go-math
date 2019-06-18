@@ -12,10 +12,26 @@ import (
 	"time"
 )
 
-// Divide divides the first value by the second value while following a few simple rules to convert integers and floats.  This function returns floats rather than truncates integer.  Divide first checks for divisibility with a%b == 0.  If integer a is divisible by integer b, then returns an integer.  If integer a is not divisible by integer b, then converts both numbers to floats and returns the remainder.
+// Divide divides a by b while following a few simple rules to maximize precision.  Rather than truncating integers, this function converts the input to floats if a is not divisible by b.
+//
+//	- If integer a is divisible by integer b, then returns an integer.
+//	- If integer a is not divisible by integer b, then converts both numbers to floats and returns the remainder.
 // Supports types uint8, int32, int64, int, float64, and time.Duration.
-// Returns an error if the values cannot be added.
-func Divide(a interface{}, b interface{}) (interface{}, error) {
+// Catches divide by zero panics and returns as errors.
+// Returns an error if a cannot be divided by b.
+func Divide(a interface{}, b interface{}) (out interface{}, err error) {
+
+	// Catch and recover from runtime error, e.g., divide by zero.
+	defer func() {
+		if r := recover(); r != nil {
+			if re, ok := r.(error); ok {
+				out = nil
+				err = re
+			} else {
+				panic(r)
+			}
+		}
+	}()
 
 	switch a := a.(type) {
 	case time.Duration:
