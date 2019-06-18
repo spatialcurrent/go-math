@@ -22,6 +22,13 @@ func TestDivideUInt8s(t *testing.T) {
 	assert.Equal(t, uint8(2), out)
 }
 
+func TestDivideZero(t *testing.T) {
+	out, err := Divide(int32(8), int32(0))
+	assert.NotNil(t, err)
+	assert.Equal(t, err.Error(), "runtime error: integer divide by zero")
+	assert.Equal(t, nil, out)
+}
+
 func TestDivideInts(t *testing.T) {
 	out, err := Divide(int32(8), int32(4))
 	assert.NoError(t, err)
