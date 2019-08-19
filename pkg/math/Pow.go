@@ -34,10 +34,19 @@ func Pow(a interface{}, b interface{}) (out interface{}, err error) {
 		case uint8:
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int32:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int64:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case float64:
 			return stdmath.Pow(float64(a), b), nil
@@ -47,10 +56,19 @@ func Pow(a interface{}, b interface{}) (out interface{}, err error) {
 		case uint8:
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int32:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int64:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case float64:
 			return stdmath.Pow(float64(a), b), nil
@@ -60,10 +78,19 @@ func Pow(a interface{}, b interface{}) (out interface{}, err error) {
 		case uint8:
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int32:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int64:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case float64:
 			return stdmath.Pow(float64(a), b), nil
@@ -73,10 +100,19 @@ func Pow(a interface{}, b interface{}) (out interface{}, err error) {
 		case uint8:
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int32:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int64:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case int:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return int(stdmath.Pow(float64(a), float64(b))), nil
 		case float64:
 			return stdmath.Pow(float64(a), b), nil
@@ -86,10 +122,19 @@ func Pow(a interface{}, b interface{}) (out interface{}, err error) {
 		case uint8:
 			return stdmath.Pow(a, float64(b)), nil
 		case int32:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return stdmath.Pow(a, float64(b)), nil
 		case int64:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return stdmath.Pow(a, float64(b)), nil
 		case int:
+			if b < 0 {
+				return stdmath.Pow(float64(a), float64(b)), nil
+			}
 			return stdmath.Pow(a, float64(b)), nil
 		case float64:
 			return stdmath.Pow(a, b), nil

@@ -27,6 +27,12 @@ func TestPowerZero(t *testing.T) {
 	assert.Equal(t, 1, out)
 }
 
+func TestPowerNegative(t *testing.T) {
+	out, err := Pow(int32(2), int32(-4))
+	assert.Nil(t, err)
+	assert.Equal(t, 0.0625, out)
+}
+
 func TestPowerInts(t *testing.T) {
 	out, err := Pow(int32(8), int32(4))
 	assert.NoError(t, err)
