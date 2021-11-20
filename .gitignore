@@ -1,4 +1,11 @@
-secret/
-bin/
+bin
+dist
+vendor
+Gopkg.lock
 *.so
 *.h
+.DS_Store
+.npm
+node_modules
+npm-debug.*
+package-lock.json

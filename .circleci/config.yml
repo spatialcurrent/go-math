@@ -1,35 +1,25 @@
-version: 2.1
+version: "2.1"
+
 executors:
-  base:
+  # `main` uses the `cimg/go:1.17` docker image.
+  main:
     docker:
-      - image: circleci/golang:1.12
-    working_directory: /go/src/github.com/spatialcurrent/go-math
+      - image: cimg/go:1.17
+
 jobs:
-  pre_deps_golang:
-    executor: base
+
+  # `test_go` tests the source code.
+  test_go:
+    executor: main
     steps:
       - checkout
-      - run: make deps_go
-      - run: sudo chown -R circleci /go/src
-      - save_cache:
-          key: v1-go-src-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - /go/src
-  test_go:
-    executor: base
-    steps:
-      - run: sudo chown -R circleci /go/src
-      - restore_cache:
-          keys:
-            - v1-go-src-{{ .Branch }}-{{ .Revision }}
-      - run: make deps_go_test
-      - run: make test_go
+      - run: make fmt
       - run: make imports
+      - run: make test_go
       - run: git diff --exit-code
+
 workflows:
+  version: 2
   main:
     jobs:
-      - pre_deps_golang
-      - test_go:
-          requires:
-            - pre_deps_golang
+      - test_go
