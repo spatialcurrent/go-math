@@ -1,8 +1,20 @@
 #!/bin/bash
+
+# =================================================================
+#
+# Copyright (C) 2021 Spatial Current, Inc. - All Rights Reserved
+# Released as open source under the MIT License.  See LICENSE file.
+#
+# =================================================================
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 set -eu
+
+# move up a directory
 cd $DIR/..
+
 pkgs=$(go list ./... | grep -v /vendor/ | tr "\n" " ")
+
 echo "******************"
 echo "Running unit tests"
 go test -p 1 -count 1 -short $pkgs
@@ -11,16 +23,13 @@ echo "Running go vet"
 go vet $pkgs
 echo "******************"
 echo "Running go vet with shadow"
-go vet -vettool=$(which shadow) $pkgs
+go vet -vettool="bin/shadow" $pkgs
 echo "******************"
 echo "Running errcheck"
-errcheck ${pkgs}
-echo "******************"
-echo "Running ineffassign"
-find . -name '*.go' | xargs ineffassign
+bin/errcheck ${pkgs}
 echo "******************"
 echo "Running staticcheck"
-staticcheck -checks all ${pkgs}
+bin/staticcheck -checks all ${pkgs}
 echo "******************"
 echo "Running misspell"
-misspell -locale US -error *.md *.go
+bin/misspell -locale US -error *.md *.go
